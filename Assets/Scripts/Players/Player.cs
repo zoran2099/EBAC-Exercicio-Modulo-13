@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
 
@@ -17,8 +17,14 @@ public class Player : MonoBehaviour
 
     public float speed;
 
+    public float ForceJump = 0;
+
     // Update is called once per frame
-    void Update()
+    void Update() { 
+        HandleMoviment();
+        HandleJump();
+    }
+    void HandleMoviment()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -33,4 +39,15 @@ public class Player : MonoBehaviour
 
         }
     }
+
+    private void HandleJump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+
+            myRigidbody.velocity = Vector2.up * ForceJump;
+        }
+
+    }
+
 }
