@@ -19,6 +19,11 @@ public class Player : MonoBehaviour
 
     public float ForceJump = 0;
 
+    public float speedRun = 0;
+    private float _currentSpeed = 0;
+
+    private bool isRunning = false;
+
 
     public Vector2 Frition = new Vector2(-.1f,0f);
 
@@ -30,17 +35,29 @@ public class Player : MonoBehaviour
     }
     void HandleMoviment()
     {
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            _currentSpeed = speedRun;
+        }
+        else
+        {
+            _currentSpeed = speed;
+            
+        }
+     
+            
+            
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             //myRigidbody.MovePosition(myRigidbody.position - velocity * Time.deltaTime); têm lag
-            myRigidbody.velocity = new Vector2(-speed, myRigidbody.velocity.y);
+            myRigidbody.velocity = new Vector2(-_currentSpeed, myRigidbody.velocity.y);
 
 
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             //myRigidbody.MovePosition(myRigidbody.position + velocity * Time.deltaTime); têm lag
-            myRigidbody.velocity = new Vector2(speed, myRigidbody.velocity.y);
+            myRigidbody.velocity = new Vector2(_currentSpeed, myRigidbody.velocity.y);
 
         }
             
