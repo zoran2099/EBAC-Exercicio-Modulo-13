@@ -19,6 +19,10 @@ public class Player : MonoBehaviour
 
     public float ForceJump = 0;
 
+
+    public Vector2 Frition = new Vector2(-.1f,0f);
+
+
     // Update is called once per frame
     void Update() { 
         HandleMoviment();
@@ -31,6 +35,7 @@ public class Player : MonoBehaviour
             //myRigidbody.MovePosition(myRigidbody.position - velocity * Time.deltaTime); têm lag
             myRigidbody.velocity = new Vector2(-speed, myRigidbody.velocity.y);
 
+
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -38,6 +43,17 @@ public class Player : MonoBehaviour
             myRigidbody.velocity = new Vector2(speed, myRigidbody.velocity.y);
 
         }
+            
+        if (myRigidbody.velocity.x > 0)
+        {
+            myRigidbody.velocity += Frition;
+
+        } else if (myRigidbody.velocity.x < 0)
+        {
+            myRigidbody.velocity -= Frition;
+
+        }
+
     }
 
     private void HandleJump()
