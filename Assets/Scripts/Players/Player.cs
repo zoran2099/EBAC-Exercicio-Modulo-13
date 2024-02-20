@@ -33,10 +33,6 @@ public class Player : MonoBehaviour
     public Ease ease = Ease.OutBack;
 
 
-
-
-
-
     // Update is called once per frame
     void Update() { 
         HandleMoviment();
@@ -89,9 +85,6 @@ public class Player : MonoBehaviour
 
             myRigidbody.velocity = Vector2.up * ForceJump;
 
-            myRigidbody.transform.localScale = Vector2.one;
-            DOTween.Kill(myRigidbody.transform);
-
             HandleScaleJump();
         }
 
@@ -99,6 +92,8 @@ public class Player : MonoBehaviour
 
     private void HandleScaleJump()
     {
+        myRigidbody.transform.localScale = Vector2.one;
+        DOTween.Kill(myRigidbody.transform);
 
         myRigidbody.transform.DOScaleY(jumpScaleY, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
         myRigidbody.transform.DOScaleX(jumpScaleX, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
