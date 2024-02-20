@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
     }
     void HandleMoviment()
     {
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift))
         {
             _currentSpeed = speedRun;
         }
@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
 
             myRigidbody.velocity = Vector2.up * ForceJump;
 
-            HandleScaleJump();
+            HandleScaleJump();  
         }
 
     }
