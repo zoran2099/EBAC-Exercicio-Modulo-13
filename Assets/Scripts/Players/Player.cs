@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,19 +15,26 @@ public class Player : MonoBehaviour
 
     public Rigidbody2D myRigidbody;
 
-    public Vector2 velocity;
-
-    public float speed;
-
-    public float ForceJump = 0;
-
-    public float speedRun = 0;
-    private float _currentSpeed = 0;
-
-    private bool isRunning = false;
 
 
+    [Header("Speed Setup")]
     public Vector2 Frition = new Vector2(-.1f,0f);
+    public float speed;
+    public float speedRun = 0;
+    public float ForceJump = 0;
+    private float _currentSpeed;
+
+
+
+    [Header("Animation Setup")]
+    public float jumpScaleY = 1.5f;
+    public float jumpScaleX = .7f;
+    public float animationDuration = .3f;
+    public Ease ease = Ease.OutBack;
+
+
+
+
 
 
     // Update is called once per frame
@@ -79,8 +88,19 @@ public class Player : MonoBehaviour
         {
 
             myRigidbody.velocity = Vector2.up * ForceJump;
+
+            myRigidbody.transform.localScale = Vector2.one;
+            DOTween.Kill(myRigidbody.transform);
+
+            HandleScaleJump();
         }
 
     }
 
+    private void HandleScaleJump()
+    {
+
+        myRigidbody.transform.DOScaleY(jumpScaleY, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+        myRigidbody.transform.DOScaleX(jumpScaleX, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+    }
 }
