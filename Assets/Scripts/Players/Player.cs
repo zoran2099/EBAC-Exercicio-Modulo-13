@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
 
     }
 
+    private int _LookToLeft = -1;
+    private int _LookToRight = 1;
+    public float TurnDuration = .2f;
 
     public Rigidbody2D myRigidbody;
 
@@ -33,6 +36,10 @@ public class Player : MonoBehaviour
     public Ease ease = Ease.OutBack;
 
 
+    [Header("Animation Player")]
+    public string activateAnimation = "Run";
+    public Animator animator;
+        
     // Update is called once per frame
     void Update() { 
         HandleMoviment();
@@ -57,6 +64,12 @@ public class Player : MonoBehaviour
             //myRigidbody.MovePosition(myRigidbody.position - velocity * Time.deltaTime); têm lag
             myRigidbody.velocity = new Vector2(-_currentSpeed, myRigidbody.velocity.y);
 
+            if (myRigidbody.transform.localScale.x != _LookToLeft)
+            {
+                myRigidbody.transform.DOScaleX(_LookToLeft, TurnDuration);
+            }
+
+            animator.SetBool(activateAnimation, true);
 
         }
         else if (Input.GetKey(KeyCode.RightArrow))
@@ -64,6 +77,14 @@ public class Player : MonoBehaviour
             //myRigidbody.MovePosition(myRigidbody.position + velocity * Time.deltaTime); têm lag
             myRigidbody.velocity = new Vector2(_currentSpeed, myRigidbody.velocity.y);
 
+            if (myRigidbody.transform.localScale.x != _LookToRight)
+            {
+                myRigidbody.transform.DOScaleX(_LookToRight, TurnDuration);
+            }
+            animator.SetBool(activateAnimation, true);
+        } else
+        {
+            animator.SetBool(activateAnimation, false);
         }
             
         if (myRigidbody.velocity.x > 0)
@@ -91,11 +112,13 @@ public class Player : MonoBehaviour
     }
 
     private void HandleScaleJump()
-    {
-        myRigidbody.transform.localScale = Vector2.one;
+    {        
+
+        myRigidbody.transform.localScale = new Vector2(myRigidbody.transform.localScale.x < 0 ? -1 : 1, 1);
+
         DOTween.Kill(myRigidbody.transform);
 
         myRigidbody.transform.DOScaleY(jumpScaleY, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
-        myRigidbody.transform.DOScaleX(jumpScaleX, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+        myRigidbody.transform.DOScaleX(jumpScaleX * myRigidbody.transform.localScale.x , animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
     }
 }
