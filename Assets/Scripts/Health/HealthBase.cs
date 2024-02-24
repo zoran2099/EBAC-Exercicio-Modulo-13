@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +17,9 @@ public class HealthBase : MonoBehaviour
     [SerializeField]
     private FlashColor _flashColor;
 
+    
+    public Action OnDeath;
+    
     private void Awake()
     {
 
@@ -47,7 +51,7 @@ public class HealthBase : MonoBehaviour
 
         }
 
-        _flashColor?.Flash();
+        _flashColor.Flash();
 
     }
 
@@ -61,9 +65,10 @@ public class HealthBase : MonoBehaviour
             //DOTWEEN ► Target or field is missing/null () ► The object of type 'Transform' has been destroyed but you are still trying to access it.
             //Your script should either check if it is null or you should not destroy the object.
 
-
         }
 
+        OnDeath?.Invoke();    
     }
+
       
 }

@@ -3332,6 +3332,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8835229685202505509, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1629823390}
+    - targetCorrespondingSourceObject: {fileID: 8835229685202505509, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1629823391}
   m_SourcePrefab: {fileID: 100100000, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
 --- !u!1 &1347069094
 GameObject:
@@ -4250,7 +4253,9 @@ MonoBehaviour:
   animationDuration: 0.2
   ease: 27
   activateAnimation: Run
+  triggerDeath: Death
   animator: {fileID: 1629823388}
+  _healthBase: {fileID: 1554812065}
 --- !u!114 &1554812065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4264,8 +4269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startLife: 10
-  destroyOnKill: 1
-  delayToKill: 0.5
+  destroyOnKill: 0
+  delayToKill: 1
   _flashColor: {fileID: 1554812066}
 --- !u!114 &1554812066
 MonoBehaviour:
@@ -4563,6 +4568,19 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 16
   m_SortAtRoot: 0
+--- !u!114 &1629823391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205377882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1dcb013df9786c4f9c929719fa856dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1554812064}
 --- !u!212 &1641928658 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8779633609815029051, guid: e0d57717ad485d748986ddb9eba2beb8, type: 3}
@@ -4580,9 +4598,9 @@ GameObject:
   - component: {fileID: 1657028022}
   - component: {fileID: 1657028021}
   - component: {fileID: 1657028020}
-  - component: {fileID: 1657028026}
-  - component: {fileID: 1657028025}
   - component: {fileID: 1657028024}
+  - component: {fileID: 1657028025}
+  - component: {fileID: 1657028026}
   m_Layer: 0
   m_Name: PFB_Dev_Enemy_2
   m_TagString: Untagged
@@ -4702,10 +4720,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9898e807293ff724e854d2cdf04aaf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damaged: 10
+  damaged: 3
   animator: {fileID: 3122169294817524646, guid: e0d57717ad485d748986ddb9eba2beb8, type: 3}
   triggerAttack: Attack
+  triggerDeath: Death
   health: {fileID: 1657028025}
+  _timeToDestroy: 2
 --- !u!114 &1657028025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4719,7 +4739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startLife: 10
-  destroyOnKill: 1
+  destroyOnKill: 0
   delayToKill: 0.5
   _flashColor: {fileID: 1657028026}
 --- !u!114 &1657028026
@@ -4915,7 +4935,9 @@ MonoBehaviour:
   damaged: 10
   animator: {fileID: 0}
   triggerAttack: Attack
+  triggerDeath: Death
   health: {fileID: 0}
+  _timeToDestroy: 0
 --- !u!50 &1703362606
 Rigidbody2D:
   serializedVersion: 4
@@ -5708,7 +5730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startLife: 10
-  destroyOnKill: 1
+  destroyOnKill: 0
   delayToKill: 0.5
   _flashColor: {fileID: 1942426366}
 --- !u!114 &1942426368
@@ -5724,9 +5746,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damaged: 3
-  animator: {fileID: 2403329696302037006, guid: 3de838754c767a446a5473969062a84e, type: 3}
+  animator: {fileID: 1238491836}
   triggerAttack: Attack
+  triggerDeath: Death
   health: {fileID: 1942426367}
+  _timeToDestroy: 2
 --- !u!4 &1951041850 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6171955496306414412, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
