@@ -13,10 +13,17 @@ public class HealthBase : MonoBehaviour
 
     public float delayToKill = .5f;
 
+    [SerializeField]
+    private FlashColor _flashColor;
+
     private void Awake()
     {
 
         Init();
+        if (_flashColor == null)
+        {
+            _flashColor = GetComponent<FlashColor>();    
+        }
 
     }
 
@@ -40,6 +47,8 @@ public class HealthBase : MonoBehaviour
 
         }
 
+        _flashColor?.Flash();
+
     }
 
     private void Kill()
@@ -48,6 +57,7 @@ public class HealthBase : MonoBehaviour
         if(destroyOnKill && gameObject != null)
         {
             Destroy(gameObject,delayToKill);
+
             //DOTWEEN ► Target or field is missing/null () ► The object of type 'Transform' has been destroyed but you are still trying to access it.
             //Your script should either check if it is null or you should not destroy the object.
 
