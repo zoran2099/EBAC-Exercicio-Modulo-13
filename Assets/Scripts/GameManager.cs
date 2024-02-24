@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ebac.Core.Singleton;
 using DG.Tweening;
+using TMPro;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -11,6 +12,7 @@ public class GameManager : Singleton<GameManager>
     [Header("Player")]
     public GameObject playerPrefab;
     private GameObject _currentPlayer;
+   
 
     [Header("Enenies")]
     public List<GameObject> enemies;
@@ -22,6 +24,8 @@ public class GameManager : Singleton<GameManager>
     public float duration = 2f;
     public float delay = 0.5f;
     public Ease Ease = Ease.OutBack;
+
+
 
 
     private void Start()
@@ -38,4 +42,6 @@ public class GameManager : Singleton<GameManager>
         _currentPlayer.transform.DOScale(0, duration).SetEase(Ease).From();
 
     }
+
+    
 }
