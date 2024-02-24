@@ -10,7 +10,7 @@ public class EnemyBase : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        Debug.Log("Heheh");
+        
         var healthBase = collision.gameObject.GetComponent<HealthBase>();
         
         healthBase?.Damage(damaged);    
