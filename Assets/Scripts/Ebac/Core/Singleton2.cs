@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -33,7 +34,7 @@ namespace Ebac.Core.Singleton
             // Mantenha o Singleton vivo entre as cenas
             DontDestroyOnLoad(this.gameObject);
         }
-
+                
         // Propriedade est�tica para acessar a inst�ncia
         public static Singleton2 Instance
         {
