@@ -20,26 +20,16 @@ public class Player : MonoBehaviour
 
 
 
-    [Header("Speed Setup")]
-    public Vector2 Frition = new Vector2(-.1f,0f);
-    
-    public SOFloat speed;
-    public SOFloat speedRun;
-    public SOFloat ForceJump;
+    [Header("Player Setup")]
+    public SOPlayerSetup playerSetup;
+
     private float _currentSpeed;
 
 
 
-    [Header("Animation Setup")]
-    public SOFloat jumpScaleY;
-    public SOFloat jumpScaleX;
-    public SOFloat animationDuration;
     public Ease ease = Ease.OutBack;
 
 
-    [Header("Animation Player")]
-    public string activateAnimation = "Run";
-    public string triggerDeath = "Death";
     public Animator animator;
 
     [SerializeField]
@@ -58,7 +48,7 @@ public class Player : MonoBehaviour
     {
 
         _healthBase.OnDeath -= OnPlayerDeath;
-        animator.SetTrigger(triggerDeath);
+        animator.SetTrigger(playerSetup.triggerDeath);
         
     }
 
@@ -71,11 +61,11 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift))
         {
-            _currentSpeed = speedRun.value;
+            _currentSpeed = playerSetup.speedRun;
         }
         else
         {
-            _currentSpeed = speed.value;
+            _currentSpeed = playerSetup.speed;
             
         }
      
@@ -91,7 +81,7 @@ public class Player : MonoBehaviour
                 myRigidbody.transform.DOScaleX(_LookToLeft, TurnDuration);
             }
 
-            animator.SetBool(activateAnimation, true);
+            animator.SetBool(playerSetup.activateAnimation, true);
 
         }
         else if (Input.GetKey(KeyCode.RightArrow))
@@ -103,19 +93,19 @@ public class Player : MonoBehaviour
             {
                 myRigidbody.transform.DOScaleX(_LookToRight, TurnDuration);
             }
-            animator.SetBool(activateAnimation, true);
+            animator.SetBool(playerSetup.activateAnimation, true);
         } else
         {
-            animator.SetBool(activateAnimation, false);
+            animator.SetBool(playerSetup.activateAnimation, false);
         }
             
         if (myRigidbody.velocity.x > 0)
         {
-            myRigidbody.velocity += Frition;
+            myRigidbody.velocity += playerSetup.Frition;
 
         } else if (myRigidbody.velocity.x < 0)
         {
-            myRigidbody.velocity -= Frition;
+            myRigidbody.velocity -= playerSetup.Frition;
 
         }
 
@@ -126,7 +116,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
         {
 
-            myRigidbody.velocity = Vector2.up * ForceJump.value;
+            myRigidbody.velocity = Vector2.up * playerSetup.ForceJump;
 
             HandleScaleJump();  
         }
@@ -140,8 +130,8 @@ public class Player : MonoBehaviour
 
         DOTween.Kill(myRigidbody.transform);
 
-        myRigidbody.transform.DOScaleY(jumpScaleY.value, animationDuration.value).SetLoops(2, LoopType.Yoyo).SetEase(ease);
-        myRigidbody.transform.DOScaleX(jumpScaleX.value * myRigidbody.transform.localScale.x , animationDuration.value).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+        myRigidbody.transform.DOScaleY(playerSetup.jumpScaleY, playerSetup.animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+        myRigidbody.transform.DOScaleX(playerSetup.jumpScaleX * myRigidbody.transform.localScale.x , playerSetup.animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
     }
 
 
