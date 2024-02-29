@@ -22,17 +22,18 @@ public class Player : MonoBehaviour
 
     [Header("Speed Setup")]
     public Vector2 Frition = new Vector2(-.1f,0f);
-    public float speed;
-    public float speedRun = 0;
-    public float ForceJump = 0;
+    
+    public SOFloat speed;
+    public SOFloat speedRun;
+    public SOFloat ForceJump;
     private float _currentSpeed;
 
 
 
     [Header("Animation Setup")]
-    public float jumpScaleY = 1.5f;
-    public float jumpScaleX = .7f;
-    public float animationDuration = .3f;
+    public SOFloat jumpScaleY;
+    public SOFloat jumpScaleX;
+    public SOFloat animationDuration;
     public Ease ease = Ease.OutBack;
 
 
@@ -70,11 +71,11 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift))
         {
-            _currentSpeed = speedRun;
+            _currentSpeed = speedRun.value;
         }
         else
         {
-            _currentSpeed = speed;
+            _currentSpeed = speed.value;
             
         }
      
@@ -125,7 +126,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
         {
 
-            myRigidbody.velocity = Vector2.up * ForceJump;
+            myRigidbody.velocity = Vector2.up * ForceJump.value;
 
             HandleScaleJump();  
         }
@@ -139,8 +140,8 @@ public class Player : MonoBehaviour
 
         DOTween.Kill(myRigidbody.transform);
 
-        myRigidbody.transform.DOScaleY(jumpScaleY, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
-        myRigidbody.transform.DOScaleX(jumpScaleX * myRigidbody.transform.localScale.x , animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+        myRigidbody.transform.DOScaleY(jumpScaleY.value, animationDuration.value).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+        myRigidbody.transform.DOScaleX(jumpScaleX.value * myRigidbody.transform.localScale.x , animationDuration.value).SetLoops(2, LoopType.Yoyo).SetEase(ease);
     }
 
 

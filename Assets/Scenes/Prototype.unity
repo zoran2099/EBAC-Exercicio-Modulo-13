@@ -4367,12 +4367,12 @@ MonoBehaviour:
   TurnDuration: 0.2
   myRigidbody: {fileID: 1554812060}
   Frition: {x: -1, y: 0}
-  speed: 8
-  speedRun: 25
-  ForceJump: 10.61
-  jumpScaleY: 1.5
-  jumpScaleX: 0.7
-  animationDuration: 0.2
+  speed: {fileID: 11400000, guid: 504faf9758e8ebe489978b7b6ee4b20f, type: 2}
+  speedRun: {fileID: 11400000, guid: 17faa2cf115b36d4a9eb19d9e3b90803, type: 2}
+  ForceJump: {fileID: 11400000, guid: 30ebad1b27f57904799c9c9ea4ba3679, type: 2}
+  jumpScaleY: {fileID: 11400000, guid: 39ea67bd70efc6a4eb8cfa2c9b7fc938, type: 2}
+  jumpScaleX: {fileID: 11400000, guid: c0b5eb56b4684b741b2b6fdba8ddcdbd, type: 2}
+  animationDuration: {fileID: 11400000, guid: de6a3c7629b39714994f8c8ad1245127, type: 2}
   ease: 27
   activateAnimation: Run
   triggerDeath: Death
