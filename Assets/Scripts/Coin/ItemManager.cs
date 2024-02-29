@@ -9,8 +9,6 @@ public class ItemManager : Singleton3<ItemManager>
 {
     private int _count = 0;
 
-    public TextMeshProUGUI textCoinsPlayer;
-
     public int Count()
     {
         return _count;
@@ -36,7 +34,7 @@ public class ItemManager : Singleton3<ItemManager>
 
     public void ScoreCoins()
     {
-        textCoinsPlayer.text = "x "+_count.ToString();
+        UIInGameManager.UpdateTextCoins("x " + _count.ToString());
 
 
     }
