@@ -8,7 +8,7 @@ public class UIInGameManager : Singleton3<UIInGameManager>
 {
    
     public  TextMeshProUGUI textCoins;
-
+    
     public static void UpdateTextCoins(string amount)
     {
         Instance.textCoins.text = amount;

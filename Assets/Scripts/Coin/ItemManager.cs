@@ -7,11 +7,12 @@ using UnityEngine;
 
 public class ItemManager : Singleton3<ItemManager>
 {
-    private int _count = 0;
+    [SerializeField]
+    private SOInt _count;
 
     public int Count()
     {
-        return _count;
+        return _count.value;
     }
 
     private void Start()
@@ -22,19 +23,20 @@ public class ItemManager : Singleton3<ItemManager>
 
     private void Reset()
     {
-        _count = 0;
+        _count.value = 0;
     }
 
     public void AddCount(int amount = 1)
     {
-        _count += amount;
+        _count.value += amount;
         ScoreCoins();
 
     }
 
     public void ScoreCoins()
     {
-        UIInGameManager.UpdateTextCoins("x " + _count.ToString());
+        
+        //UIInGameManager.UpdateTextCoins("x " + _count.ToString());
 
 
     }
