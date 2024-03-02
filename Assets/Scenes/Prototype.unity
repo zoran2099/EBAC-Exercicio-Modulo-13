@@ -4789,6 +4789,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2944973745361044811, guid: e0d57717ad485d748986ddb9eba2beb8, type: 3}
   m_PrefabInstance: {fileID: 1579885716}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1579885718 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3122169294817524646, guid: e0d57717ad485d748986ddb9eba2beb8, type: 3}
+  m_PrefabInstance: {fileID: 1579885716}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1622777701
 GameObject:
   m_ObjectHideFlags: 0
@@ -5035,7 +5040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damaged: 3
-  animator: {fileID: 3122169294817524646, guid: e0d57717ad485d748986ddb9eba2beb8, type: 3}
+  animator: {fileID: 1579885718}
   triggerAttack: Attack
   triggerDeath: Death
   health: {fileID: 1657028025}
