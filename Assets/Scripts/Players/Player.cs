@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     public Ease ease = Ease.OutBack;
 
 
-    public Animator animator;
+    private Animator _currentAnimator;
 
     [SerializeField]
     private HealthBase _healthBase;
@@ -42,13 +42,15 @@ public class Player : MonoBehaviour
             _healthBase.OnDeath += OnPlayerDeath;
 
         }
+
+        _currentAnimator = Instantiate(playerSetup.animator, gameObject.transform);
     }
 
     private void OnPlayerDeath()
     {
 
         _healthBase.OnDeath -= OnPlayerDeath;
-        animator.SetTrigger(playerSetup.triggerDeath);
+        _currentAnimator.SetTrigger(playerSetup.triggerDeath);
         
     }
 
@@ -81,7 +83,7 @@ public class Player : MonoBehaviour
                 myRigidbody.transform.DOScaleX(_LookToLeft, TurnDuration);
             }
 
-            animator.SetBool(playerSetup.activateAnimation, true);
+            _currentAnimator.SetBool(playerSetup.activateAnimation, true);
 
         }
         else if (Input.GetKey(KeyCode.RightArrow))
@@ -93,10 +95,10 @@ public class Player : MonoBehaviour
             {
                 myRigidbody.transform.DOScaleX(_LookToRight, TurnDuration);
             }
-            animator.SetBool(playerSetup.activateAnimation, true);
+            _currentAnimator.SetBool(playerSetup.activateAnimation, true);
         } else
         {
-            animator.SetBool(playerSetup.activateAnimation, false);
+            _currentAnimator.SetBool(playerSetup.activateAnimation, false);
         }
             
         if (myRigidbody.velocity.x > 0)

@@ -18,6 +18,7 @@ public class SOPlayerSetup : ScriptableObject
     public float jumpScaleY;
     public float jumpScaleX;
     public float animationDuration;
+    public Animator animator;
 
     [Header("Animation Player")]
     public string activateAnimation = "Run";
