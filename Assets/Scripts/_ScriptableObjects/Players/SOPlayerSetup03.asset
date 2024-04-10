@@ -19,6 +19,6 @@ MonoBehaviour:
   jumpScaleY: 1.5
   jumpScaleX: 0.7
   animationDuration: 0.2
-  animator: {fileID: 6413013834153556191, guid: ea814ac3df655c44ba91e666740c3dbb, type: 3}
+  animator: {fileID: 6413013834153556191, guid: b3d3df8f3300f724a8a1acf46e93b853, type: 3}
   activateAnimation: Run
   triggerDeath: Death
