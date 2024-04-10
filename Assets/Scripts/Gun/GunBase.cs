@@ -15,11 +15,16 @@ public class GunBase : MonoBehaviour
 
     public Transform playerSideReference;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        if (playerSideReference == null)
+        {
+            playerSideReference = GetComponentInParent<Rigidbody2D>().transform;
+
+        }
     }
+
+
 
     // Update is called once per frame
     void Update()

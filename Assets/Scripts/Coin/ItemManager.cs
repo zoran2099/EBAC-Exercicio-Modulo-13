@@ -7,13 +7,20 @@ using UnityEngine;
 
 public class ItemManager : Singleton3<ItemManager>
 {
-    private int _count = 0;
+    [SerializeField]
+    private SOInt _count;
 
-    public TextMeshProUGUI textCoinsPlayer;
+    [SerializeField]
+    private SOInt _satellitesCount;
 
     public int Count()
     {
-        return _count;
+        return _count.value;
+    }
+
+    public int SatellitesCount()
+    {
+        return _satellitesCount.value;
     }
 
     private void Start()
@@ -24,19 +31,26 @@ public class ItemManager : Singleton3<ItemManager>
 
     private void Reset()
     {
-        _count = 0;
+        _count.value = 0;
+        _satellitesCount.value = 0;
+    }
+
+    public void AddSatellite(int amount = 1)
+    {
+        _satellitesCount.value += amount;   
     }
 
     public void AddCount(int amount = 1)
     {
-        _count += amount;
+        _count.value += amount;
         ScoreCoins();
 
     }
 
     public void ScoreCoins()
     {
-        textCoinsPlayer.text = "x "+_count.ToString();
+        
+        //UIInGameManager.UpdateTextCoins("x " + _count.ToString());
 
 
     }
