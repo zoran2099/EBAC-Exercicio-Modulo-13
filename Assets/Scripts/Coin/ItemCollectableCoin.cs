@@ -7,6 +7,7 @@ using UnityEngine;
 public class ItemCollectableCoin : ItemCollectableBase
 {
     private bool _isCollectable = true;
+    public float duration = 1f; // Duração da animação
 
     protected override void Collect()
     {
@@ -18,7 +19,6 @@ public class ItemCollectableCoin : ItemCollectableBase
    
     }
 
-    public float duration = 1f; // Duração da animação
 
     public void CollectCoin()
     {       
