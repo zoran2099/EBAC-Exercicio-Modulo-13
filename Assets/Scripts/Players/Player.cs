@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
             
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            //myRigidbody.MovePosition(myRigidbody.position - velocity * Time.deltaTime); têm lag
+            //myRigidbody.MovePosition(myRigidbody.position - velocity * _fx_time.deltaTime); têm lag
             myRigidbody.velocity = new Vector2(-_currentSpeed, myRigidbody.velocity.y);
 
             if (myRigidbody.transform.localScale.x != _LookToLeft)
@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            //myRigidbody.MovePosition(myRigidbody.position + velocity * Time.deltaTime); têm lag
+            //myRigidbody.MovePosition(myRigidbody.position + velocity * _fx_time.deltaTime); têm lag
             myRigidbody.velocity = new Vector2(_currentSpeed, myRigidbody.velocity.y);
 
             if (myRigidbody.transform.localScale.x != _LookToRight)
