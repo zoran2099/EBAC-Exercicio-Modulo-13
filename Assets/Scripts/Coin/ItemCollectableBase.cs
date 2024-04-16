@@ -23,6 +23,8 @@ public class ItemCollectableBase : MonoBehaviour
         //Your script should either check if it is null or you should not destroy the object.
 
         gameObject.SetActive(false);
+
+        OnCollect();
     }
 
     protected virtual void OnCollect()
