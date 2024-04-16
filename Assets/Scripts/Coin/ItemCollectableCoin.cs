@@ -12,9 +12,13 @@ public class ItemCollectableCoin : ItemCollectableBase
     public float duration = 1f; // Duração da animação
     public ParticleSystem ParticleSystem;
 
+    [Header("Sound Settings")]
+    public AudioSource AudioSource;
+
     private void Awake()
     {
         if (ParticleSystem != null) ParticleSystem.transform.SetParent(null);
+        if (AudioSource != null) AudioSource.transform.SetParent(null);
     }
 
     protected override void Collect()
@@ -23,28 +27,50 @@ public class ItemCollectableCoin : ItemCollectableBase
 
         ItemManager.Instance.AddCount();
 
-        if (ParticleSystem != null)
-        {
-            ParticleSystem.Play();
 
-        }
-        //FXCollectCoinDotTween();
+        Debug.Log("TESTE");
+
+
+        OnCollect();
 
         _isCollectable = false;
+        // Talvez esssa seja a instrução que esteja desativando os objetos de 
+        // forma precipitada o que faz levar a usar Invoke(nameof(CleanObjects), _fx_time);
         gameObject.SetActive(false);
 
         Invoke(nameof(CleanObjects), _fx_time);
 
     }
 
+    protected override void OnCollect()
+    {
+        if (ParticleSystem != null) { 
+
+            ParticleSystem.Play(); 
+        }
+
+        if (AudioSource != null) { 
+            AudioSource.Play(); 
+        }
+        //FXCollectCoinDotTween();
+    }
+
     public void CleanObjects()
     {
-        if(ParticleSystem != null)
+        if (ParticleSystem != null)
         {
             ParticleSystem.gameObject.SetActive(false);
             Destroy(ParticleSystem.gameObject);
-            Destroy(gameObject);
         }
+
+        if (AudioSource != null)
+        {
+            AudioSource.gameObject.SetActive(false);
+            Destroy(AudioSource.gameObject);
+        }
+
+
+        Destroy(gameObject);
     }
 
 
