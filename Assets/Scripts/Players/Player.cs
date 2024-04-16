@@ -35,6 +35,15 @@ public class Player : MonoBehaviour
     [SerializeField]
     private HealthBase _healthBase;
 
+
+    [Header("Jump Collision check")]
+    private Collider2D Collider2D;
+    public float distToGround;
+    public float spaceToGround = .1f;
+
+    [Header("Jump VFX")]
+    public ParticleSystem ParticleSystem;
+
     private void Awake()
     {
         if (_healthBase != null)
@@ -44,6 +53,14 @@ public class Player : MonoBehaviour
         }
 
         _currentAnimator = Instantiate(playerSetup.animator, gameObject.transform);
+
+        if(Collider2D != null)
+        {
+            Collider2D = GetComponent<Collider2D>();
+            distToGround = Collider2D.bounds.extents.y;
+        }
+
+        
     }
 
     private void OnPlayerDeath()
@@ -56,9 +73,21 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void Update() { 
+        IsGrounded();
         HandleMoviment();
         HandleJump();
     }
+
+    
+
+
+    private bool IsGrounded()
+    {
+        Debug.DrawRay(transform.position, -Vector2.up, Color.magenta, distToGround + spaceToGround);
+        
+        return Physics2D.Raycast(transform.position, -Vector2.up, distToGround + spaceToGround);
+    }
+
     void HandleMoviment()
     {
         if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift))
@@ -75,7 +104,7 @@ public class Player : MonoBehaviour
             
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            //myRigidbody.MovePosition(myRigidbody.position - velocity * Time.deltaTime); têm lag
+            //myRigidbody.MovePosition(myRigidbody.position - velocity * _fx_time.deltaTime); têm lag
             myRigidbody.velocity = new Vector2(-_currentSpeed, myRigidbody.velocity.y);
 
             if (myRigidbody.transform.localScale.x != _LookToLeft)
@@ -88,7 +117,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            //myRigidbody.MovePosition(myRigidbody.position + velocity * Time.deltaTime); têm lag
+            //myRigidbody.MovePosition(myRigidbody.position + velocity * _fx_time.deltaTime); têm lag
             myRigidbody.velocity = new Vector2(_currentSpeed, myRigidbody.velocity.y);
 
             if (myRigidbody.transform.localScale.x != _LookToRight)
@@ -115,14 +144,23 @@ public class Player : MonoBehaviour
 
     private void HandleJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
 
             myRigidbody.velocity = Vector2.up * playerSetup.ForceJump;
 
-            HandleScaleJump();  
+            HandleScaleJump();
+
+            PlayJumpVFX();
+
         }
 
+    }
+
+    private void PlayJumpVFX()
+    {         
+        //if (ParticleSystem != null) ParticleSystem.Play();
+        VFXManager.Instance.PlayVFXByType(VFXManager.VFX_Type.JUMP, transform.position);
     }
 
     private void HandleScaleJump()
@@ -142,4 +180,7 @@ public class Player : MonoBehaviour
         Destroy(gameObject);
 
     }
+
+
+    
 }
