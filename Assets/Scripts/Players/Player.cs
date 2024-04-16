@@ -159,7 +159,8 @@ public class Player : MonoBehaviour
 
     private void PlayJumpVFX()
     {         
-        if (ParticleSystem != null) ParticleSystem.Play();
+        //if (ParticleSystem != null) ParticleSystem.Play();
+        VFXManager.Instance.PlayVFXByType(VFXManager.VFX_Type.JUMP, transform.position);
     }
 
     private void HandleScaleJump()
