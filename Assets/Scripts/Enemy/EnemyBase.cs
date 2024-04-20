@@ -18,12 +18,17 @@ public class EnemyBase : MonoBehaviour
     [SerializeField]
     private float _timeToDestroy= 2f;
 
+    [Header("Soud Efects")]
+    public AudioSource AudioSource;
+
+
     private void Awake()
     {
         if (health != null)
         {
             health.OnDeath += OnEnemyDeath;
         }
+        //if (AudioSource != null) AudioSource.transform.SetParent(null);
     }
 
 
@@ -32,7 +37,13 @@ public class EnemyBase : MonoBehaviour
         
         health.OnDeath -= OnEnemyDeath;
         PlayDeathAnimation();
+        PlayDeathSFX();
         Destroy(gameObject,_timeToDestroy);
+    }
+
+    private void PlayDeathSFX()
+    {
+        if (AudioSource != null) AudioSource.Play();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
