@@ -13219,6 +13219,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3294411287784764205, guid: 3de838754c767a446a5473969062a84e, type: 3}
   m_PrefabInstance: {fileID: 787325876}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1839081994 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4689221804472460541, guid: f3ff67aaeb1b5ba46b4aa872d51b17fc, type: 3}
+  m_PrefabInstance: {fileID: 1943561988}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1848393256
 GameObject:
   m_ObjectHideFlags: 0
@@ -13448,6 +13453,10 @@ PrefabInstance:
     - target: {fileID: 4689221804472460541, guid: 502873be2ecdf89429832dab5ff2ee46, type: 3}
       propertyPath: m_Name
       value: PFB_Particle_System_Jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689221804472460541, guid: 502873be2ecdf89429832dab5ff2ee46, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13900,7 +13909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4689221804472460541, guid: f3ff67aaeb1b5ba46b4aa872d51b17fc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14761,6 +14770,9 @@ MonoBehaviour:
   - VFX_Type: 0
     prefab: {fileID: 688573693}
     LifeTime: 0.5
+  - VFX_Type: 1
+    prefab: {fileID: 1839081994}
+    LifeTime: -1
 --- !u!1 &2112765829
 GameObject:
   m_ObjectHideFlags: 0

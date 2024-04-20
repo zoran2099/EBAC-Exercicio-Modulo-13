@@ -52,7 +52,9 @@ public class Player : MonoBehaviour
         }
 
         _currentAnimator = Instantiate(playerSetup.animator, gameObject.transform);
-        
+
+        VFXManager.Instance.PlayVFXByType(VFXManager.VFX_Type.RUN, gameObject.transform);
+
     }
 
     private void OnPlayerDeath()
@@ -152,7 +154,7 @@ public class Player : MonoBehaviour
 
     private void PlayJumpVFX()
     {   
-        VFXManager.Instance.PlayVFXByType(VFXManager.VFX_Type.JUMP, transform.position);
+        VFXManager.Instance.PlayVFXByType(VFXManager.VFX_Type.JUMP, transform);
     }
 
     private void HandleScaleJump()
