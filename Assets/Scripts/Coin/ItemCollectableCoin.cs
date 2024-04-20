@@ -69,8 +69,7 @@ public class ItemCollectableCoin : ItemCollectableBase
             Destroy(AudioSource.gameObject);
         }
 
-
-        Destroy(gameObject);
+        if (gameObject != null) Destroy(gameObject);
     }
 
 

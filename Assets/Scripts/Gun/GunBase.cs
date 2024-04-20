@@ -20,8 +20,9 @@ public class GunBase : MonoBehaviour
 
     private void Start()
     {
-        if (playerSideReference == null)
+        if (playerSideReference == null && GetComponentInParent<Rigidbody2D>() != null)
         {
+            
             playerSideReference = GetComponentInParent<Rigidbody2D>().transform;
 
         }
