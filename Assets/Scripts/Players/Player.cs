@@ -36,9 +36,8 @@ public class Player : MonoBehaviour
     private HealthBase _healthBase;
 
 
-    [Header("Jump Collision check")]
-    private Collider2D Collider2D;
-    public float distToGround;
+    [Header("Jump Collision check")]    
+    public float distToGround;    
     public float spaceToGround = .1f;
 
     [Header("Jump VFX")]
@@ -53,13 +52,6 @@ public class Player : MonoBehaviour
         }
 
         _currentAnimator = Instantiate(playerSetup.animator, gameObject.transform);
-
-        if(Collider2D != null)
-        {
-            Collider2D = GetComponent<Collider2D>();
-            distToGround = Collider2D.bounds.extents.y;
-        }
-
         
     }
 
@@ -83,9 +75,10 @@ public class Player : MonoBehaviour
 
     private bool IsGrounded()
     {
-        Debug.DrawRay(transform.position, -Vector2.up, Color.magenta, distToGround + spaceToGround);
+        // O DrawRay está aí para ajudar o Designer a visualiar o espaço e o movimento de pulo do Player para eventual ajuste fino
+        Debug.DrawRay(transform.position, -Vector2.up * distToGround, Color.magenta, spaceToGround);
         
-        return Physics2D.Raycast(transform.position, -Vector2.up, distToGround + spaceToGround);
+        return Physics2D.Raycast(transform.position, -Vector2.up, distToGround );
     }
 
     void HandleMoviment()
