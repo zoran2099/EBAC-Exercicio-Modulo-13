@@ -2723,6 +2723,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8622257899716607877, guid: 3de838754c767a446a5473969062a84e, type: 3}
   m_PrefabInstance: {fileID: 2038777897}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &688573693 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4689221804472460541, guid: 502873be2ecdf89429832dab5ff2ee46, type: 3}
+  m_PrefabInstance: {fileID: 1874823122}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &704026381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11762,7 +11767,7 @@ MonoBehaviour:
   _healthBase: {fileID: 1554812065}
   distToGround: 0.1
   spaceToGround: 1
-  ParticleSystem: {fileID: 1960898412}
+  ParticleSystem: {fileID: 0}
 --- !u!114 &1554812065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13893,6 +13898,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PFB_Particle_System_Dust
       objectReference: {fileID: 0}
+    - target: {fileID: 4689221804472460541, guid: f3ff67aaeb1b5ba46b4aa872d51b17fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14050,11 +14059,6 @@ CanvasRenderer:
 --- !u!4 &1960898410 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2274602942526331169, guid: 502873be2ecdf89429832dab5ff2ee46, type: 3}
-  m_PrefabInstance: {fileID: 1874823122}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1960898412 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8119385874823473035, guid: 502873be2ecdf89429832dab5ff2ee46, type: 3}
   m_PrefabInstance: {fileID: 1874823122}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1962265197
@@ -14755,7 +14759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VFXSetups:
   - VFX_Type: 0
-    prefab: {fileID: 4689221804472460541, guid: 502873be2ecdf89429832dab5ff2ee46, type: 3}
+    prefab: {fileID: 688573693}
     LifeTime: 0.5
 --- !u!1 &2112765829
 GameObject:
