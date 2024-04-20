@@ -15,6 +15,9 @@ public class GunBase : MonoBehaviour
 
     public Transform playerSideReference;
 
+    [Header("Sound System")]
+    public PlayAudioClipsRandom PlayAudioClipsRandom;
+
     private void Start()
     {
         if (playerSideReference == null)
@@ -53,6 +56,8 @@ public class GunBase : MonoBehaviour
 
     public void Shoot()
     {
+        if (PlayAudioClipsRandom != null) PlayAudioClipsRandom.PlayRandom();
+
         var projecitl = Instantiate(prefabProjectile) ;
         projecitl.transform.position = positionToShoot.position;
         projecitl.side = playerSideReference.transform.localScale.x;
