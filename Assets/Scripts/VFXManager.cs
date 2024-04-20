@@ -14,20 +14,24 @@ public class VFXManager : Singleton3<VFXManager>
 
     public List<VFXManagerSetup> VFXSetups;
 
-    public void PlayVFXByType(VFX_Type vfxType, Vector3 position)
+    public void PlayVFXByType(VFX_Type vfxType, Transform parent )
     {
         if (VFXSetups != null)
         {
+            //Vector3 position = transform.position;
+
             foreach (var vfx in VFXSetups)
             {
                 if (vfx.VFX_Type == vfxType) {
                 
-                    var itemPrefab = Instantiate(vfx.prefab);
-                    itemPrefab.transform.position = position;
+                    var itemPrefab = Instantiate(vfx.prefab, parent);
+                    
+                    itemPrefab.SetActive(true);
                     
                     itemPrefab.GetComponent<ParticleSystem>().Play();
+                    
+                    if (vfx.LifeTime >= 0) Destroy(itemPrefab.gameObject, vfx.LifeTime);
 
-                    Destroy(itemPrefab.gameObject, vfx.LifeTime);
                     break;
                 }
             }
