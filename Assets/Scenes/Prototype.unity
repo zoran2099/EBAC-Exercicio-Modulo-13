@@ -3212,7 +3212,7 @@ RectTransform:
   m_Father: {fileID: 1783845980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.85714287, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8727,8 +8727,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1519656428}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.75, y: 0}
+  m_AnchorMax: {x: 0.75, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10347,7 +10347,7 @@ RectTransform:
   m_Father: {fileID: 772865646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.75, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10687,8 +10687,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1764201727}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.85714287, y: 0}
+  m_AnchorMax: {x: 0.85714287, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -11760,8 +11760,8 @@ MonoBehaviour:
   playerSetup: {fileID: 11400000, guid: e8ac55fd86995924caa41ea1b0df5c74, type: 2}
   ease: 27
   _healthBase: {fileID: 1554812065}
-  distToGround: 0
-  spaceToGround: 0.1
+  distToGround: 0.1
+  spaceToGround: 1
   ParticleSystem: {fileID: 1960898412}
 --- !u!114 &1554812065
 MonoBehaviour:
@@ -11932,7 +11932,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1567315314
 RectTransform:
   m_ObjectHideFlags: 0
