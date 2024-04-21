@@ -2,16 +2,12 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
+    
     private int _LookToLeft = -1;
     private int _LookToRight = 1;
     public float TurnDuration = .2f;
@@ -22,6 +18,7 @@ public class Player : MonoBehaviour
 
     [Header("Player Setup")]
     public SOPlayerSetup playerSetup;
+    private bool isAlive = true;    
 
     private float _currentSpeed;
 
@@ -43,6 +40,10 @@ public class Player : MonoBehaviour
     [Header("Jump VFX")]
     public ParticleSystem ParticleSystem;
 
+    [Header("End Game")]
+    public GameObject UIMenu;
+    public TextMeshProUGUI textEndGame;
+
     private void Awake()
     {
         if (_healthBase != null)
@@ -59,17 +60,34 @@ public class Player : MonoBehaviour
 
     private void OnPlayerDeath()
     {
+        isAlive = false;
 
         _healthBase.OnDeath -= OnPlayerDeath;
         _currentAnimator.SetTrigger(playerSetup.triggerDeath);
-        
+
+        ShowMenuEndGame();
+    }
+
+    private void ShowMenuEndGame()
+    {
+        //chama a UI 
+        if (UIMenu != null)
+        {
+            UIMenu.SetActive(true);
+        }
+
+        if (textEndGame != null) textEndGame.text = "You Died";
     }
 
     // Update is called once per frame
     void Update() { 
         IsGrounded();
-        HandleMoviment();
-        HandleJump();
+        if (isAlive)
+        {
+            HandleMoviment();
+            HandleJump();
+
+        }
     }
 
     
