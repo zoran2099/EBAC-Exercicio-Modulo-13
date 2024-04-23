@@ -26,10 +26,14 @@ public class GameManager : Singleton<GameManager>
     public Ease Ease = Ease.OutBack;
 
 
+    [Header("Audio intro")]
+    public AudioSource IntroAudioSource;
 
 
     private void Start()
     {
+        if (IntroAudioSource != null) IntroAudioSource.Play();
+
         SpawnPlayer();
 
     }

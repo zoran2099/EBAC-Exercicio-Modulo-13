@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     [Header("End Game")]
     public GameObject UIMenu;
     public TextMeshProUGUI textEndGame;
+    public AudioSource AudioEndGame;
 
     private void Awake()
     {
@@ -77,6 +78,9 @@ public class Player : MonoBehaviour
         }
 
         if (textEndGame != null) textEndGame.text = "You Died";
+
+        //play end death music 
+        if (AudioEndGame != null) AudioEndGame.Play();
     }
 
     // Update is called once per frame
@@ -197,6 +201,13 @@ public class Player : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("END_GAME"))
+        {
+            isAlive = false;
+            _currentAnimator.SetBool(playerSetup.activateAnimation, false);
+        }
+    }
 
-    
 }

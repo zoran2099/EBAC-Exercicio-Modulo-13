@@ -9,11 +9,13 @@ public class EndGame : MonoBehaviour
 
     public PauseGameManger PauseGameManger;
 
+    public AudioSource AudioEndGame;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision != null && collision.transform.CompareTag(Tag)) UIMenu.SetActive(true);   
 
-        if (PauseGameManger != null) PauseGameManger.PauseGame();
+        if (AudioEndGame != null) AudioEndGame.Play();
+        //if (PauseGameManger != null) PauseGameManger.PauseGame();
     }
 }
