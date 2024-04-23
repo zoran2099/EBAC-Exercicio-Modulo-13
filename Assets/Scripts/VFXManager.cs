@@ -19,12 +19,16 @@ public class VFXManager : Singleton3<VFXManager>
         if (VFXSetups != null)
         {
             //Vector3 position = transform.position;
-
+            Debug.Log("PlayVFXByType was called.");
             foreach (var vfx in VFXSetups)
             {
                 if (vfx.VFX_Type == vfxType) {
                 
                     var itemPrefab = Instantiate(vfx.prefab, parent);
+                    
+                    itemPrefab.transform.position = parent.transform.position;
+                    
+                    itemPrefab.name = itemPrefab.name + "Dinamic";
                     
                     itemPrefab.SetActive(true);
                     
