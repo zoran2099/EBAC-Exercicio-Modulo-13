@@ -37,8 +37,8 @@ public class Player : MonoBehaviour
     public float distToGround;    
     public float spaceToGround = .1f;
 
-    [Header("Jump VFX")]
-    public ParticleSystem ParticleSystem;
+    [Header("Jump SFX")]
+    public PlayAudioClipsRandom PlayAudioClipsRandom;
 
     [Header("End Game")]
     public GameObject UIMenu;
@@ -171,8 +171,12 @@ public class Player : MonoBehaviour
     }
 
     private void PlayJumpVFX()
-    {   
+    {
+        //Play jump vfx 
         VFXManager.Instance.PlayVFXByType(VFXManager.VFX_Type.JUMP, transform);
+        
+        //Play jump sfx 
+        if (PlayAudioClipsRandom != null) PlayAudioClipsRandom.PlayRandom();
     }
 
     private void HandleScaleJump()
