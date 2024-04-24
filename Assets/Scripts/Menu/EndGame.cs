@@ -7,7 +7,7 @@ public class EndGame : MonoBehaviour
     public string Tag = "Player";
     public GameObject UIMenu;
 
-    public PauseGameManger PauseGameManger;
+    public AudioTransition AudioTransition;
 
     public AudioSource AudioEndGame;
 
@@ -16,6 +16,8 @@ public class EndGame : MonoBehaviour
         if (collision != null && collision.transform.CompareTag(Tag)) UIMenu.SetActive(true);   
 
         if (AudioEndGame != null) AudioEndGame.Play();
-        //if (PauseGameManger != null) PauseGameManger.PauseGame();
+        
+        
+        if (AudioTransition!= null) AudioTransition.MakeAudioMixerTransition();
     }
 }

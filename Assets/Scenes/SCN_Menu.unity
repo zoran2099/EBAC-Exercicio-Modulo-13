@@ -3883,6 +3883,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828e6b7fba1d55b49a2e5601d87f3480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1819526425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819526419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e18c4a1076b41484bbeb2e6366544665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixerSnapshot: {fileID: 24500006, guid: 8a1799685ea03034ca66fe6edfdc98fb, type: 2}
+  transitionTime: 0.1
 --- !u!1 &1849393367
 GameObject:
   m_ObjectHideFlags: 0
@@ -4302,18 +4316,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3987730045516049363, guid: f2f775488eb820844aea0d68381d2574, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3987730045516049363, guid: f2f775488eb820844aea0d68381d2574, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3987730045516049363, guid: f2f775488eb820844aea0d68381d2574, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987730045516049363, guid: f2f775488eb820844aea0d68381d2574, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1819526424}
     - target: {fileID: 3987730045516049363, guid: f2f775488eb820844aea0d68381d2574, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1819526425}
+    - target: {fileID: 3987730045516049363, guid: f2f775488eb820844aea0d68381d2574, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987730045516049363, guid: f2f775488eb820844aea0d68381d2574, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3987730045516049363, guid: f2f775488eb820844aea0d68381d2574, type: 3}
@@ -4321,8 +4347,16 @@ PrefabInstance:
       value: Load
       objectReference: {fileID: 0}
     - target: {fileID: 3987730045516049363, guid: f2f775488eb820844aea0d68381d2574, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: MakeAudioMixerTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987730045516049363, guid: f2f775488eb820844aea0d68381d2574, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: LoadScene, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987730045516049363, guid: f2f775488eb820844aea0d68381d2574, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: AudioTransition, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3987730045516049363, guid: f2f775488eb820844aea0d68381d2574, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -4330,6 +4364,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3987730045516049363, guid: f2f775488eb820844aea0d68381d2574, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987730045516049363, guid: f2f775488eb820844aea0d68381d2574, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5193921479342264145, guid: f2f775488eb820844aea0d68381d2574, type: 3}
@@ -4423,6 +4461,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6410095248334157197, guid: f2f775488eb820844aea0d68381d2574, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1819526424}
+    - targetCorrespondingSourceObject: {fileID: 6410095248334157197, guid: f2f775488eb820844aea0d68381d2574, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1819526425}
   m_SourcePrefab: {fileID: 100100000, guid: f2f775488eb820844aea0d68381d2574, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
