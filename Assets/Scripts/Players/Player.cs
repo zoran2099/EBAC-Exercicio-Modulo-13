@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     public GameObject UIMenu;
     public TextMeshProUGUI textEndGame;
     public AudioSource AudioEndGame;
+    public AudioTransition AudioTransition;
 
     private void Awake()
     {
@@ -79,6 +80,7 @@ public class Player : MonoBehaviour
 
         if (textEndGame != null) textEndGame.text = "You Died";
 
+        if (AudioTransition != null) AudioTransition.MakeAudioMixerTransition();
         //play end death music 
         if (AudioEndGame != null) AudioEndGame.Play();
     }
